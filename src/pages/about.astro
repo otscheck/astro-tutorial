@@ -1,5 +1,31 @@
 ---
 
+const pageTitle = "About Us";
+
+const identity = {
+	name: "John Doe",
+	age: 30,
+	country: "RDC",
+	occupation: "Software Developer",
+	hobbies: ["coder", "lire", "voyager"],
+	website: "www.johndoe.com",
+	contact: "john.doe@example.com",
+}
+
+const skills = [
+	"JavaScript",
+	"TypeScript",
+	"Vue",
+	"Node.js",
+	"CSS",
+	"HTML",
+	"Astro",
+	"Python"
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -8,16 +34,36 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>About</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<a href="/">Home</a>
 		<a href="/about/">About</a>
 		<a href="/blog/">Blog</a>
 
-		<h1>About Us</h1>
+		<h1>{pageTitle}</h1>
 		<p>We are a team of passionate developers.</p>
 		<p>We love building amazing web applications.</p>
 		<p>We are always learning and improving our skills.</p>
+
+		<h2>About Me</h2>
+		<p>{identity.name}, âgé de {identity.age} ans, vit en {identity.country} et travaille comme {identity.occupation}. Il aime {identity.hobbies.join(", ")}. Vous pouvez visiter son site web à <a href="https://{identity.website}" target="_blank">{identity.website}</a> ou le contacter à <a href="mailto:{identity.contact}">{identity.contact}</a>.</p>
+
+		<p>Deux de mes hobbies sont {identity.hobbies[0]} et {identity.hobbies[1]}.</p>
+
+		<h2>Skills</h2>
+		<ul>
+			{skills.map(skill => (
+				<li>{skill}</li>
+			))}
+		</ul>
+		<p>We are always looking for new challenges and opportunities to grow.</p>
+
+		{happy && <p>I am happy to be learning Astro!</p>}
+
+		{finished && <p>I finished this tutorial!</p>}
+
+		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
 	</body>
 </html>
